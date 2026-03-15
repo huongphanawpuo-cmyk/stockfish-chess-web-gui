@@ -3,33 +3,33 @@
  * Repository: https://github.com/shaack/chess-console-stockfish
  * License: MIT, see file 'LICENSE'
  */
-import { Observe } from "cm-web-modules/src/observe/Observe.js"
-import { UiComponent } from "cm-web-modules/src/app/Component.js"
-import { ENGINE_STATE } from "cm-engine-runner/src/EngineRunner.js"
+
+import { ENGINE_STATE } from "cm-engine-runner/src/EngineRunner.js";
+import { UiComponent } from "cm-web-modules/src/app/Component.js";
+import { Observe } from "cm-web-modules/src/observe/Observe.js";
 
 export class StockfishStateView extends UiComponent {
+	/**
+	 * @param chessConsole
+	 * @param player
+	 * @param props // { spinnerIcon: spinner }
+	 */
+	constructor(chessConsole, player, props = {}) {
+		super(undefined, props);
+		this.chessConsole = chessConsole;
+		this.player = player;
+		const i18n = chessConsole.i18n;
+		if (!this.props.spinnerIcon) {
+			this.props.spinnerIcon = "spinner";
+		}
+		this.numberFormat = new Intl.NumberFormat(i18n.locale, {
+			minimumFractionDigits: 1,
+			maximumFractionDigits: 1,
+		});
+		this.element = this.chessConsole.context.querySelector(".engine-state");
 
-    /**
-     * @param chessConsole
-     * @param player
-     * @param props // { spinnerIcon: spinner }
-     */
-    constructor(chessConsole, player, props = {}) {
-        super(undefined, props)
-        this.chessConsole = chessConsole
-        this.player = player
-        const i18n = chessConsole.i18n
-        if (!this.props.spinnerIcon) {
-            this.props.spinnerIcon = "spinner"
-        }
-        this.numberFormat = new Intl.NumberFormat(i18n.locale, {
-            minimumFractionDigits: 1,
-            maximumFractionDigits: 1
-        })
-        this.element = this.chessConsole.context.querySelector(".engine-state")
-
-        // Premium Bootstrap-based structure
-        this.element.innerHTML = `
+		// Premium Bootstrap-based structure
+		this.element.innerHTML = `
             <div class="card border-0 shadow-sm bg-light overflow-hidden">
                 <div class="card-body p-2 d-flex align-items-center gap-3">
                     <div class="flex-shrink-0 d-flex align-items-center">
@@ -52,86 +52,90 @@ export class StockfishStateView extends UiComponent {
                     </div>
                 </div>
             </div>
-        `
+        `;
 
-        this.statusIndicator = this.element.querySelector(".engine-status-indicator")
-        this.scoreBadge = this.element.querySelector(".score-badge")
-        this.progressBar = this.element.querySelector(".progress-bar")
-        this.statusBadge = this.element.querySelector(".status-badge")
-        this.nameLabel = this.element.querySelector(".engine-name-label")
+		this.statusIndicator = this.element.querySelector(
+			".engine-status-indicator",
+		);
+		this.scoreBadge = this.element.querySelector(".score-badge");
+		this.progressBar = this.element.querySelector(".progress-bar");
+		this.statusBadge = this.element.querySelector(".status-badge");
+		this.nameLabel = this.element.querySelector(".engine-name-label");
 
-        Observe.property(player.state, "skillLevel", () => {
-            this.updatePlayerName()
-        })
-        Observe.property(player.state, "depth", () => {
-            this.updatePlayerName()
-        })
-        Observe.property(player.state, "engineState", () => {
-            const state = player.state.engineState
-            if (state === ENGINE_STATE.THINKING) {
-                this.statusIndicator.style.backgroundColor = 'var(--bs-primary)'
-                this.statusIndicator.classList.add('pulse-animation-thinking')
-                this.statusIndicator.classList.remove('pulse-animation-ready')
-                this.progressBar.style.width = '100%'
-                this.statusBadge.innerText = 'Thinking'
-                this.statusBadge.classList.remove('bg-white', 'text-dark')
-                this.statusBadge.classList.add('bg-primary', 'text-white')
-            } else if (state === ENGINE_STATE.LOADING) {
-                this.statusIndicator.style.backgroundColor = 'var(--bs-warning)'
-                this.progressBar.style.width = '30%'
-                this.statusBadge.innerText = 'Loading'
-            } else {
-                this.statusIndicator.style.backgroundColor = 'var(--bs-success)'
-                this.statusIndicator.classList.add('pulse-animation-ready')
-                this.statusIndicator.classList.remove('pulse-animation-thinking')
-                this.progressBar.style.width = '0%'
-                this.statusBadge.innerText = 'Ready'
-                this.statusBadge.classList.add('bg-white', 'text-dark')
-                this.statusBadge.classList.remove('bg-primary', 'text-white')
-            }
-        })
-        Observe.property(player.state, "score", (event) => {
-            this.updateScoreDisplay(event.newValue)
-        })
-        Observe.property(this.chessConsole.state, "plyViewed", () => {
-            let score = player.state.scoreHistory[this.chessConsole.state.plyViewed]
-            if (!score && this.chessConsole.state.plyViewed > 0) {
-                score = player.state.scoreHistory[this.chessConsole.state.plyViewed - 1]
-            }
-            this.updateScoreDisplay(score)
-        })
-        this.updatePlayerName()
-    }
+		Observe.property(player.state, "skillLevel", () => {
+			this.updatePlayerName();
+		});
+		Observe.property(player.state, "depth", () => {
+			this.updatePlayerName();
+		});
+		Observe.property(player.state, "engineState", () => {
+			const state = player.state.engineState;
+			if (state === ENGINE_STATE.THINKING) {
+				this.statusIndicator.style.backgroundColor = "var(--bs-primary)";
+				this.statusIndicator.classList.add("pulse-animation-thinking");
+				this.statusIndicator.classList.remove("pulse-animation-ready");
+				this.progressBar.style.width = "100%";
+				this.statusBadge.innerText = "Thinking";
+				this.statusBadge.classList.remove("bg-white", "text-dark");
+				this.statusBadge.classList.add("bg-primary", "text-white");
+			} else if (state === ENGINE_STATE.LOADING) {
+				this.statusIndicator.style.backgroundColor = "var(--bs-warning)";
+				this.progressBar.style.width = "30%";
+				this.statusBadge.innerText = "Loading";
+			} else {
+				this.statusIndicator.style.backgroundColor = "var(--bs-success)";
+				this.statusIndicator.classList.add("pulse-animation-ready");
+				this.statusIndicator.classList.remove("pulse-animation-thinking");
+				this.progressBar.style.width = "0%";
+				this.statusBadge.innerText = "Ready";
+				this.statusBadge.classList.add("bg-white", "text-dark");
+				this.statusBadge.classList.remove("bg-primary", "text-white");
+			}
+		});
+		Observe.property(player.state, "score", (event) => {
+			this.updateScoreDisplay(event.newValue);
+		});
+		Observe.property(this.chessConsole.state, "plyViewed", () => {
+			let score = player.state.scoreHistory[this.chessConsole.state.plyViewed];
+			if (!score && this.chessConsole.state.plyViewed > 0) {
+				score =
+					player.state.scoreHistory[this.chessConsole.state.plyViewed - 1];
+			}
+			this.updateScoreDisplay(score);
+		});
+		this.updatePlayerName();
+	}
 
-    updateScoreDisplay(score) {
-        if (score !== undefined && score !== null) {
-            let scoreFormatted
-            if (isNaN(score)) {
-                scoreFormatted = score
-            } else {
-                scoreFormatted = (score > 0 ? "+" : "") + this.numberFormat.format(score)
-            }
-            this.scoreBadge.innerHTML = `Score: ${scoreFormatted}`
+	updateScoreDisplay(score) {
+		if (score !== undefined && score !== null) {
+			let scoreFormatted;
+			if (Number.isNaN(score)) {
+				scoreFormatted = score;
+			} else {
+				scoreFormatted =
+					(score > 0 ? "+" : "") + this.numberFormat.format(score);
+			}
+			this.scoreBadge.innerHTML = `Score: ${scoreFormatted}`;
 
-            // Determine color based on score
-            if (!isNaN(score)) {
-                if (score > 1) {
-                    this.scoreBadge.className = 'badge score-badge bg-success'
-                } else if (score < -1) {
-                    this.scoreBadge.className = 'badge score-badge bg-danger'
-                } else {
-                    this.scoreBadge.className = 'badge score-badge bg-secondary'
-                }
-            } else {
-                this.scoreBadge.className = 'badge score-badge bg-secondary'
-            }
-        } else {
-            this.scoreBadge.innerHTML = `Score: 0.0`
-            this.scoreBadge.className = 'badge score-badge bg-secondary'
-        }
-    }
+			// Determine color based on score
+			if (!Number.isNaN(score)) {
+				if (score > 1) {
+					this.scoreBadge.className = "badge score-badge bg-success";
+				} else if (score < -1) {
+					this.scoreBadge.className = "badge score-badge bg-danger";
+				} else {
+					this.scoreBadge.className = "badge score-badge bg-secondary";
+				}
+			} else {
+				this.scoreBadge.className = "badge score-badge bg-secondary";
+			}
+		} else {
+			this.scoreBadge.innerHTML = `Score: 0.0`;
+			this.scoreBadge.className = "badge score-badge bg-secondary";
+		}
+	}
 
-    updatePlayerName() {
-        this.player.name = `Stockfish (${this.chessConsole.i18n.t("skillLevel")} ${this.player.state.skillLevel}, ${this.chessConsole.i18n.t("depth")} ${this.player.state.depth})`
-    }
+	updatePlayerName() {
+		this.player.name = `Stockfish (${this.chessConsole.i18n.t("skillLevel")} ${this.player.state.skillLevel}, ${this.chessConsole.i18n.t("depth")} ${this.player.state.depth})`;
+	}
 }

@@ -20,10 +20,10 @@ export const ENGINE_CONFIG = {
 	MIN_DEPTH: 1,
 	MAX_DEPTH: 36,
 	MIN_ANALYSIS_DEPTH: 16,
-	MAX_ANALYSIS_DEPTH: 36
-}
+	MAX_ANALYSIS_DEPTH: 36,
+};
 
 export const GAME_CONFIG = {
 	START_FEN: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
-	SAVE_PREFIX: "Stockfish"
-}
+	SAVE_PREFIX: "Stockfish",
+};
