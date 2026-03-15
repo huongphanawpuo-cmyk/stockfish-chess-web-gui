@@ -1,4 +1,5 @@
 import { ENGINE_CONFIG, STYLING_CONFIG } from "./Config.js";
+import { escapeHtml } from "./Utils.js";
 
 export class StockfishNewGameDialog {
 	constructor(chessConsole, props) {
@@ -296,7 +297,7 @@ export class StockfishNewGameDialog {
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">${props.title || "New Game"}</h5>
+                            <h5 class="modal-title">${escapeHtml(props.title || "New Game")}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">${props.body}</div>

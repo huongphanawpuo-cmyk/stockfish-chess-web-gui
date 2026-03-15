@@ -7,6 +7,8 @@ import { ARROW_TYPE } from "cm-chessboard/src/extensions/arrows/Arrows.js";
 import { ENGINE_CONFIG } from "./Config.js";
 import { CustomStockfishRunner } from "./CustomStockfishRunner.js";
 
+import { escapeHtml } from "./Utils.js";
+
 export class StockfishAnalysis {
 	constructor(container, props = {}) {
 		this.container = container;
@@ -229,9 +231,9 @@ export class StockfishAnalysis {
 				// Score Formatting
 				const scoreClass = "text-dark";
 				tr.innerHTML = `
-                <td class="${scoreClass} font-weight-bold">${line.score}</td>
-                <td>${line.depth}</td>
-                <td class="text-dark" style="word-break: break-word;">${line.pv}</td>
+                <td class="${scoreClass} font-weight-bold">${escapeHtml(line.score)}</td>
+                <td>${escapeHtml(line.depth)}</td>
+                <td class="text-dark" style="word-break: break-word;">${escapeHtml(line.pv)}</td>
             `;
 				this.tbody.appendChild(tr);
 			});

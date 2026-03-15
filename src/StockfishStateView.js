@@ -8,6 +8,8 @@ import { ENGINE_STATE } from "cm-engine-runner/src/EngineRunner.js";
 import { UiComponent } from "cm-web-modules/src/app/Component.js";
 import { Observe } from "cm-web-modules/src/observe/Observe.js";
 
+import { escapeHtml } from "./Utils.js";
+
 export class StockfishStateView extends UiComponent {
 	/**
 	 * @param chessConsole
@@ -115,7 +117,7 @@ export class StockfishStateView extends UiComponent {
 				scoreFormatted =
 					(score > 0 ? "+" : "") + this.numberFormat.format(score);
 			}
-			this.scoreBadge.innerHTML = `Score: ${scoreFormatted}`;
+			this.scoreBadge.innerHTML = `Score: ${escapeHtml(scoreFormatted)}`;
 
 			// Determine color based on score relative to player color
 			if (!Number.isNaN(score)) {
@@ -135,7 +137,7 @@ export class StockfishStateView extends UiComponent {
 				this.scoreBadge.className = "badge score-badge bg-secondary";
 			}
 		} else {
-			this.scoreBadge.innerHTML = `Score: 0.0`;
+			this.scoreBadge.innerHTML = "Score: 0.0";
 			this.scoreBadge.className = "badge score-badge bg-secondary";
 		}
 	}
