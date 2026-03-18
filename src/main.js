@@ -39,7 +39,7 @@ const chessConsole = new ChessConsole(
 	document.getElementById("console-container"),
 	{ name: i18n.t("playerName"), type: LocalPlayer },
 	{
-		name: "Stockfish 17.1",
+		name: "Stockfish 18",
 		type: StockfishPlayer,
 		props: {
 			worker: ENGINE_CONFIG.WORKER_PATH,

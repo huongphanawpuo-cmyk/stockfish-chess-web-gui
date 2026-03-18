@@ -2,10 +2,10 @@
 
 ![GUI Type](https://img.shields.io/badge/Type-Web_GUI-orange)
 ![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow)
-![Stockfish 17.1 Chess Engine](https://img.shields.io/badge/Stockfish_Chess_Engine-17.1-43AC6A)
+![Stockfish 18 Chess Engine](https://img.shields.io/badge/Stockfish_Chess_Engine-17.1-43AC6A)
 ![License](https://img.shields.io/badge/License-GNU_AGPLv3-blue)
 
-A modern, responsive, and fully functional web-based chess application powered by the **Stockfish 17.1** engine.
+A modern, responsive, and fully functional web-based chess application powered by the **Stockfish 18** engine.
 
 ---
 
@@ -131,7 +131,7 @@ Core constants and default settings are located in `src/Config.js`.
 
 ## Security Requirements
 
-Stockfish 17.1 utilizes multi-threaded WebAssembly, which depends on **SharedArrayBuffer**. For security reasons (Spectre/Meltdown mitigation), modern browsers only enable this feature if the page is cross-origin isolated.
+Stockfish 18 utilizes multi-threaded WebAssembly, which depends on **SharedArrayBuffer**. For security reasons (Spectre/Meltdown mitigation), modern browsers only enable this feature if the page is cross-origin isolated.
 
 The following headers MUST be present in your hosting environment:
 
