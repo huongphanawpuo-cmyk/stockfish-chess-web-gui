@@ -8,9 +8,9 @@
         "@fortawesome/fontawesome-free": "^7.2.0",
         "bootstrap": "^5.3.8",
         "chess-console": "^6.13.3",
-        "cm-chessboard": "^8.11.5",
+        "cm-chessboard": "^8.12.7",
         "cm-engine-runner": "^2.0.1",
-        "cm-web-modules": "^2.6.0",
+        "cm-web-modules": "^2.7.0",
       },
     },
   },
@@ -29,7 +29,7 @@
 
     "cm-chess": ["cm-chess@3.6.3", "", { "dependencies": { "chess.mjs": "^2.3.2", "cm-pgn": "4.0.6" } }, "sha512-78ffmdsUbb+pOTf6lgTKuLvaPxrQh47xdhuGo4O00GpdgkWOiIjgpvG8vmWCDwu2MJkHHcte0oNxqbd8F9FfhA=="],
 
-    "cm-chessboard": ["cm-chessboard@8.11.5", "", {}, "sha512-zLoOeJe82ZZTjRiQUxdilHs2XSyhfIS0Eecjnj+bfHrxycqkApszt8XW5ORhooT9/SL18IEsiy1+i25a4lE1BQ=="],
+    "cm-chessboard": ["cm-chessboard@8.12.7", "", {}, "sha512-QiWBtda8G3h7DkCfiFnJMiplrmwvv6Izu4gXZUiFP17LoC6TjGNVLBTSyAeXevd8QdLDaW8UnK2z5aHvnAcAuw=="],
 
     "cm-engine-runner": ["cm-engine-runner@2.0.1", "", { "dependencies": { "cm-polyglot": "^1.1.0", "stockfish": "^18.0.5" } }, "sha512-P39Vom3awcHIu1PN9TpJCh7TZomDlm0ejLfS57ubY2qsxoI0eG3cIpWKZsc9ik7D437Jv2wg0ZPPhEJr1F2mNA=="],
 
@@ -37,11 +37,15 @@
 
     "cm-polyglot": ["cm-polyglot@1.1.0", "", {}, "sha512-yKclnR2WHNgtMViYnxUJzqfR9/iTLfG0PYNVmHNbGiZrYoc7tTrGQHutzgUISFpiQ8ArbqaZKcBzZ2S2CE4/Gg=="],
 
-    "cm-web-modules": ["cm-web-modules@2.6.0", "", {}, "sha512-JMHVLsC1CoOQBzzfo4eywudCxoTw9KGo7b8+Mj/ebpgEiiyydg0nbbEUZhImOEt48epmOebH5tWUQpmu9Me0kw=="],
+    "cm-web-modules": ["cm-web-modules@2.7.0", "", {}, "sha512-+E2z7cUKXd6aqPjOvNmsfAgWnJV9CQb6IHlgThvgh+RaECES8yBciLywTB21DNxEw8A3snWfI/7b5KMQrzFcyA=="],
 
     "patch": ["patch@0.0.1", "", {}, "sha512-+SXEoPuYhe44vUXCGAOjEISqgoo26pcSj65xK3zbKGt87CeUoIZ4cHwIkdloHHxGAEIOzMiYmRbj+t0T9pBPXw=="],
 
     "stockfish": ["stockfish@18.0.5", "", { "bin": { "stockfish": "scripts/cli.js" } }, "sha512-2A8mrlrYT8ovf4y8GIrmzOQZCC2kf01hPeM4xrVZdBeFC/LoZj+MgYLyrwdKXDQWubx1RCiKU9dFDGeDutuT3A=="],
+
+    "chess-console/cm-chessboard": ["cm-chessboard@8.11.5", "", {}, "sha512-zLoOeJe82ZZTjRiQUxdilHs2XSyhfIS0Eecjnj+bfHrxycqkApszt8XW5ORhooT9/SL18IEsiy1+i25a4lE1BQ=="],
+
+    "chess-console/cm-web-modules": ["cm-web-modules@2.6.0", "", {}, "sha512-JMHVLsC1CoOQBzzfo4eywudCxoTw9KGo7b8+Mj/ebpgEiiyydg0nbbEUZhImOEt48epmOebH5tWUQpmu9Me0kw=="],
 
     "cm-pgn/chess.mjs": ["chess.mjs@2.2.6", "", {}, "sha512-kteiZrVz42EsEJjb2G8NlCZg4fNPlSBAnIbywK065TVtnEvRqyHTN+OVR+vZ/A1iGNM/6kZpbiyUpisCwq8oUg=="],
   }

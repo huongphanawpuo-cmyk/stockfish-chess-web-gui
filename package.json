@@ -5,9 +5,9 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "bootstrap": "^5.3.8",
     "chess-console": "^6.13.3",
-    "cm-chessboard": "^8.11.5",
+    "cm-chessboard": "^8.12.7",
     "cm-engine-runner": "^2.0.1",
-    "cm-web-modules": "^2.6.0"
+    "cm-web-modules": "^2.7.0"
   },
   "description": "StockfishPlayer for ChessConsole",
   "scripts": {
